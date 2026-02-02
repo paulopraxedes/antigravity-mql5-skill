@@ -1,0 +1,213 @@
+rules:
+  # CRITICAL SAFETY RULES
+  critical_safety:
+    - id: S001
+      name: "MagicNumberRequired"
+      severity: CRITICAL
+      pattern: "PositionOpen|OrderSend|Buy|Sell"
+      check: "SetExpertMagicNumber|magic"
+      message: "CRITICAL: Must set magic number before trading to identify EA orders"
+      
+    - id: S002
+      name: "NewBarFilter"
+      severity: CRITICAL
+      pattern: "void OnTick\\(\\)"
+      requires: "IsNewBar|NewBar"
+      message: "CRITICAL: OnTick must filter with IsNewBar() to prevent tick-flooding and over-trading"
+      
+    - id: S003
+      name: "StopLevelValidation"
+      severity: CRITICAL
+      pattern: "PositionOpen|OrderSend"
+      requires: "StopsLevel|SYMBOL_TRADE_STOPS_LEVEL"
+      message: "CRITICAL: Must validate SL/TP against SYMBOL_TRADE_STOPS_LEVEL"
+      
+    - id: S004
+      name: "LotNormalization"
+      severity: CRITICAL
+      pattern: "PositionOpen|OrderSend"
+      requires: "LotsStep|SYMBOL_VOLUME_STEP|NormalizeLots"
+      message: "CRITICAL: Must normalize lots to SYMBOL_VOLUME_STEP"
+      
+    - id: S005
+      name: "ErrorHandling"
+      severity: CRITICAL
+      pattern: "PositionOpen|OrderSend"
+      check: "GetLastError|ResultRetcode"
+      message: "CRITICAL: Must check return value and handle errors"
+
+  # MEMORY MANAGEMENT
+  memory_management:
+    - id: M001
+      name: "IndicatorRelease"
+      severity: CRITICAL
+      pattern: "iMA\\(|iRSI\\(|iMACD\\(|iCustom\\("
+      destructor: "IndicatorRelease"
+      location: "OnDeinit"
+      message: "CRITICAL: All indicator handles must be released in OnDeinit()"
+      
+    - id: M002
+      name: "FileClose"
+      severity: CRITICAL
+      pattern: "FileOpen\\("
+      destructor: "FileClose"
+      location: "OnDeinit|finally"
+      message: "CRITICAL: All FileOpen() calls must have FileClose()"
+      
+    - id: M003
+      name: "ObjectDeletion"
+      severity: CRITICAL
+      pattern: "new\\s+\\w+"
+      destructor: "delete"
+      location: "OnDeinit|destructor"
+      message: "CRITICAL: All 'new' operators must have corresponding 'delete'"
+      
+    - id: M004
+      name: "TimerCleanup"
+      severity: CRITICAL
+      pattern: "EventSetTimer"
+      destructor: "EventKillTimer"
+      location: "OnDeinit"
+      message: "CRITICAL: EventSetTimer requires EventKillTimer in OnDeinit"
+
+  # CODE QUALITY
+  code_quality:
+    - id: Q001
+      name: "StrictMode"
+      severity: ERROR
+      pattern: "#property\\s+strict"
+      required: true
+      message: "ERROR: #property strict is mandatory"
+      
+    - id: Q002
+      name: "CopyrightHeader"
+      severity: ERROR
+      pattern: "#property\\s+copyright"
+      required: true
+      message: "ERROR: #property copyright required for identification"
+      
+    - id: Q003
+      name: "FunctionLength"
+      severity: WARNING
+      max_lines: 50
+      message: "WARNING: Function exceeds 50 lines. Extract to library class"
+      
+    - id: Q004
+      name: "GlobalVariables"
+      severity: WARNING
+      max_count: 10
+      pattern: "^[^/]*double\\s+g_|^[^/]*int\\s+g_"
+      message: "WARNING: Too many global variables. Use dependency injection"
+      
+    - id: Q005
+      name: "MagicNumbers"
+      severity: WARNING
+      pattern: "\\b\\d{3,}\\b"
+      exclude: "0|1|2|100|NULL|INVALID_HANDLE"
+      message: "WARNING: Magic number detected. Use named constant"
+
+  # PERFORMANCE
+  performance:
+    - id: P001
+      name: "LoopInvariant"
+      severity: WARNING
+      pattern: "for\\s*\\([^)]+\\)\\s*\\{[^}]*ArraySize|for\\s*\\([^)]+\\)\\s*\\{[^}]*SymbolInfo"
+      message: "WARNING: Move invariant calculations (ArraySize, SymbolInfo) outside loops"
+      
+    - id: P002
+      name: "StringConcatenation"
+      severity: WARNING
+      pattern: "for\\s*\\([^)]+\\)\\s*\\{[^}]*\\+\\s*="
+      message: "WARNING: Use StringAdd() in loops instead of += for better performance"
+      
+    - id: P003
+      name: "CopyBufferOptimization"
+      severity: INFO
+      pattern: "CopyBuffer\\([^,]+,\\s*0,\\s*0,\\s*1,"
+      message: "INFO: Consider caching indicator values instead of CopyBuffer on every tick"
+
+    - id: P004
+      name: "InefficientLoop"
+      severity: WARNING
+      pattern: "for\\s*\\([^;]+;[^;]+;[^)]+\\)\\s*\\{[^}]+\\}"
+      message: "WARNING: Consider optimizing this loop for better performance"
+
+    - id: P005
+      name: "UnnecessaryCopy"
+      severity: INFO
+      pattern: "CopyBuffer\\([^)]+\\)"
+      message: "INFO: Consider caching indicator values instead of CopyBuffer on every tick"
+
+  # ARCHITECTURE
+  architecture:
+    - id: A001
+      name: "HeaderGuard"
+      severity: CRITICAL
+      applies_to: "*.mqh"
+      pattern: "#ifndef|#pragma\\s+once"
+      message: "CRITICAL: Header files must have include guards"
+      
+    - id: A002
+      name: "FunctionContract"
+      severity: ERROR
+      min_lines: 10
+      requires: "Purpose:|Inputs:|Outputs:"
+      message: "ERROR: Functions >10 lines must have contract documentation"
+      
+    - id: A003
+      name: "DependencyInjection"
+      severity: WARNING
+      pattern: "new\\s+(CLogger|CTrade|CSymbolInfo)"
+      message: "WARNING: Prefer dependency injection over direct instantiation for testability"
+      
+    - id: A004
+      name: "SingleResponsibility"
+      severity: WARNING
+      max_lines: 200
+      message: "WARNING: Class exceeds 200 lines. Consider splitting responsibilities"
+
+  # SECURITY
+  security:
+    - id: S001
+      name: "MemoryLeak"
+      severity: CRITICAL
+      pattern: "new\\s+[^;]+$"
+      message: "CRITICAL: Potential memory leak. Use smart pointers or ensure proper deletion"
+
+    - id: S002
+      name: "BufferOverflow"
+      severity: CRITICAL
+      pattern: "CopyBuffer\\([^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+\\)"
+      message: "CRITICAL: Potential buffer overflow in CopyBuffer call"
+
+    - id: S003
+      name: "SQLInjection"
+      severity: CRITICAL
+      pattern: "SELECT\\s+.*\\s+FROM\\s+.*\\s+WHERE\\s+.*\\s+=\\s+[^']+'[^']+'"
+      message: "CRITICAL: Potential SQL injection vulnerability"
+
+    - id: S004
+      name: "HardcodedCredentials"
+      severity: CRITICAL
+      pattern: "password\\s*=\\s*\"[^\"]+\""
+      message: "CRITICAL: Hardcoded password detected. Use secure credential storage"
+
+  # STYLE
+  style:
+    - id: ST001
+      name: "InconsistentIndentation"
+      severity: WARNING
+      pattern: "^\s+(if|for|while|switch|case|default|else)\\s*\\("
+      message: "WARNING: Inconsistent indentation detected"
+
+    - id: ST002
+      name: "LongLine"
+      severity: WARNING
+      max_length: 120
+      message: "WARNING: Line exceeds 120 characters. Consider breaking it up"
+
+    - id: ST003
+      name: "TrailingWhitespace"    
+      severity: INFO
+      pattern: "\\s+$"
+      message: "INFO: Trailing whitespace detected"

@@ -1,0 +1,86 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Antigravity specific
+.qodo/agents/
+.qodo/workflows/
+
+# Backup Files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Log Files
+*.log
+
+# Temporary Files
+*.tmp
+*.temp
+~*
+
+# Python (if any scripts added)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Node.js (if any tools added)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled MQL5 files (if accidentally added)
+*.ex5
+
+# User-specific paths (do not commit)
+PERSONAL_PATHS.txt
+LOCAL_CONFIG.txt
+
+# Documentation build artifacts
+docs/_build/
+*.pdf.tmp
+
+# Test results
+test_results/
+*.test.log
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z

@@ -1,0 +1,55 @@
+MIT License
+
+Copyright (c) 2026 MQL5 Expert Development System Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Third-Party Content
+
+### MQL5 Reference Documentation
+File: resources/mql5.pdf
+Copyright: © MetaQuotes Software Corp.
+License: Redistributed for educational purposes under fair use
+Source: https://www.mql5.com/en/docs
+
+### Antigravity Platform
+This skill is designed for Google DeepMind's Antigravity platform.
+Antigravity is a trademark of Google LLC.
+This project is an independent community contribution and is not
+officially affiliated with or endorsed by Google or Google DeepMind.
+
+---
+
+## Disclaimer
+
+This software is provided for educational and development purposes.
+Trading financial instruments involves substantial risk of loss.
+The creators and contributors of this software are not responsible
+for any trading losses incurred through the use of code generated
+by this skill.
+
+Always test Expert Advisors thoroughly in a demo environment before
+using them with real money. Never trade with money you cannot afford
+to lose.
+
+By using this software, you acknowledge and accept these risks and
+agree that the authors and contributors shall have no liability for
+any losses or damages arising from your use of this software.
