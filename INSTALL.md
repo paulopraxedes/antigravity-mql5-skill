@@ -31,7 +31,7 @@ cd path\to\your\mql5\project
 New-Item -Path ".agent\skills" -ItemType Directory -Force
 
 # 3. Clone the skill into your project
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git .agent\skills\mql5_expert
+git clone https://github.com/yourusername/antigravity-mql5-skill.git .agent\skills\mql5_expert
 ```
 
 ```bash
@@ -43,7 +43,7 @@ cd /path/to/your/mql5/project
 mkdir -p .agent/skills
 
 # 3. Clone the skill into your project
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git .agent/skills/mql5_expert
+git clone https://github.com/yourusername/antigravity-mql5-skill.git .agent/skills/mql5_expert
 ```
 
 **✅ Advantages:**
@@ -66,14 +66,14 @@ Clone once, share across multiple projects using symbolic links.
 # Windows (PowerShell)
 # Clone to a central location (e.g., Documents)
 cd $env:USERPROFILE\Documents
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git
+git clone https://github.com/yourusername/antigravity-mql5-skill.git
 ```
 
 ```bash
 # Linux / macOS
 # Clone to a central location (e.g., home directory)
 cd ~
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git
+git clone https://github.com/yourusername/antigravity-mql5-skill.git
 ```
 
 **Step 2: Create symbolic links in each project**
@@ -84,22 +84,22 @@ git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git
 cd path\to\project1
 New-Item -ItemType SymbolicLink `
          -Path ".agent\skills\mql5_expert" `
-         -Target "$env:USERPROFILE\Documents\mql5-expert-antigravity-skill"
+         -Target "$env:USERPROFILE\Documents\antigravity-mql5-skill"
 
 cd path\to\project2
 New-Item -ItemType SymbolicLink `
          -Path ".agent\skills\mql5_expert" `
-         -Target "$env:USERPROFILE\Documents\mql5-expert-antigravity-skill"
+         -Target "$env:USERPROFILE\Documents\antigravity-mql5-skill"
 ```
 
 ```bash
 # Linux / macOS
 # For each project, create a symbolic link:
 cd /path/to/project1
-ln -s ~/mql5-expert-antigravity-skill .agent/skills/mql5_expert
+ln -s ~/antigravity-mql5-skill .agent/skills/mql5_expert
 
 cd /path/to/project2
-ln -s ~/mql5-expert-antigravity-skill .agent/skills/mql5_expert
+ln -s ~/antigravity-mql5-skill .agent/skills/mql5_expert
 ```
 
 **✅ Advantages:**
@@ -123,14 +123,14 @@ Install once for all Antigravity projects system-wide.
 ```powershell
 # Windows (PowerShell)
 # Clone to Antigravity's global skills directory
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git `
+git clone https://github.com/yourusername/antigravity-mql5-skill.git `
           "$env:USERPROFILE\.antigravity\skills\mql5_expert"
 ```
 
 ```bash
 # Linux / macOS
 # Clone to Antigravity's global skills directory
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git \
+git clone https://github.com/yourusername/antigravity-mql5-skill.git \
           ~/.antigravity/skills/mql5_expert
 ```
 
@@ -151,7 +151,7 @@ git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git \
 If you don't have Git installed or prefer manual installation.
 
 **Step 1: Download**
-1. Go to https://github.com/yourusername/mql5-expert-antigravity-skill
+1. Go to https://github.com/yourusername/antigravity-mql5-skill
 2. Click "Code" → "Download ZIP"
 3. Extract the ZIP file
 
@@ -228,7 +228,7 @@ cd .agent/skills/mql5_expert    # For local installation
 # OR
 cd ~/.antigravity/skills/mql5_expert    # For global installation
 # OR
-cd ~/Documents/mql5-expert-antigravity-skill    # For symlink source
+cd ~/Documents/antigravity-mql5-skill    # For symlink source
 
 # Update to latest version
 git pull origin main
@@ -305,8 +305,8 @@ git pull origin main
 
 ## 📞 Need Help?
 
-- **Issues**: [Report on GitHub](https://github.com/yourusername/mql5-expert-antigravity-skill/issues)
-- **Discussions**: [Ask questions](https://github.com/yourusername/mql5-expert-antigravity-skill/discussions)
+- **Issues**: [Report on GitHub](https://github.com/yourusername/antigravity-mql5-skill/issues)
+- **Discussions**: [Ask questions](https://github.com/yourusername/antigravity-mql5-skill/discussions)
 - **Documentation**: See [README.md](README.md)
 
 ---

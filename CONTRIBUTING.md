@@ -89,8 +89,8 @@ Types of contributions we welcome:
 1. **Fork the repository**
    ```bash
    # Click 'Fork' on GitHub, then:
-   git clone https://github.com/YOUR_USERNAME/mql5-expert-antigravity-skill.git
-   cd mql5-expert-antigravity-skill
+   git clone https://github.com/YOUR_USERNAME/antigravity-mql5-skill.git
+   cd antigravity-mql5-skill
    ```
 
 2. **Create a branch**
@@ -318,7 +318,7 @@ Contributors will be:
 
 ## Questions?
 
-- Open a [discussion](https://github.com/yourusername/mql5-expert-antigravity-skill/discussions)
+- Open a [discussion](https://github.com/yourusername/antigravity-mql5-skill/discussions)
 - Ask in an issue
 - Review existing documentation
 

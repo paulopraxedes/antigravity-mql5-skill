@@ -47,7 +47,7 @@ Your MQL5 Expert Development System has been successfully reorganized into a **f
 ## 📁 Final Structure
 
 ```
-agent_mql5/
+antigravity-mql5-skill/
 ├── SKILL.md                           # ✅ Main skill file (35KB)
 ├── README.md                          # ✅ Documentation
 ├── VALIDATION.md                      # ✅ This file
@@ -132,7 +132,7 @@ Your skill is **ready to use** immediately!
 cd "path\to\your\mql5\project"
 
 # Copy skill
-Copy-Item -Path "C:\Users\Paulo\OneDrive\Documentos\Sistemas Python\agent_mql5" `
+Copy-Item -Path "C:\Users\Paulo\OneDrive\Documentos\Sistemas Python\antigravity-mql5-skill" `
           -Destination ".\.agent\skills\mql5_expert" `
           -Recurse
 ```

@@ -103,8 +103,8 @@ Every generated code includes:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/mql5-expert-antigravity-skill.git
-cd mql5-expert-antigravity-skill
+git clone https://github.com/yourusername/antigravity-mql5-skill.git
+cd antigravity-mql5-skill
 ```
 
 ### Step 2: Install in Antigravity
@@ -118,7 +118,7 @@ Navigate to your MQL5 project workspace and copy the skill:
 ```powershell
 # Windows (PowerShell)
 cd path\to\your\mql5\workspace
-Copy-Item -Path "path\to\mql5-expert-antigravity-skill" `
+Copy-Item -Path "path\to\antigravity-mql5-skill" `
           -Destination ".\.agent\skills\mql5_expert" `
           -Recurse
 ```
@@ -126,7 +126,7 @@ Copy-Item -Path "path\to\mql5-expert-antigravity-skill" `
 ```bash
 # Linux/macOS
 cd /path/to/your/mql5/workspace
-cp -r /path/to/mql5-expert-antigravity-skill .agent/skills/mql5_expert
+cp -r /path/to/antigravity-mql5-skill .agent/skills/mql5_expert
 ```
 
 #### Method B: Symbolic Link (Recommended for Multiple Projects)
@@ -138,13 +138,13 @@ Create a symbolic link to use the skill across multiple workspaces:
 cd path\to\your\mql5\workspace
 New-Item -ItemType SymbolicLink `
          -Path ".\.agent\skills\mql5_expert" `
-         -Target "path\to\mql5-expert-antigravity-skill"
+         -Target "path\to\antigravity-mql5-skill"
 ```
 
 ```bash
 # Linux/macOS
 cd /path/to/your/mql5/workspace
-ln -s /path/to/mql5-expert-antigravity-skill .agent/skills/mql5_expert
+ln -s /path/to/antigravity-mql5-skill .agent/skills/mql5_expert
 ```
 
 #### Method C: Global Installation (Use Anywhere)
@@ -153,14 +153,14 @@ Place the skill in Antigravity's global skills directory:
 
 ```powershell
 # Windows
-Copy-Item -Path "path\to\mql5-expert-antigravity-skill" `
+Copy-Item -Path "path\to\antigravity-mql5-skill" `
           -Destination "$env:USERPROFILE\.antigravity\skills\mql5_expert" `
           -Recurse
 ```
 
 ```bash
 # Linux/macOS
-cp -r /path/to/mql5-expert-antigravity-skill ~/.antigravity/skills/mql5_expert
+cp -r /path/to/antigravity-mql5-skill ~/.antigravity/skills/mql5_expert
 ```
 
 ### Step 3: Verify Installation
@@ -320,7 +320,7 @@ Create an indicator showing trend strength:
 ### Project Structure
 
 ```
-mql5-expert-antigravity-skill/
+antigravity-mql5-skill/
 ├── SKILL.md                    # Main skill file (loaded by Antigravity)
 ├── README.md                   # This file
 ├── LICENSE                     # MIT License
@@ -572,8 +572,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### Getting Help
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/mql5-expert-antigravity-skill/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/mql5-expert-antigravity-skill/discussions)
+- **Issues**: [GitHub Issues](https://github.com/yourusername/antigravity-mql5-skill/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/antigravity-mql5-skill/discussions)
 - **MQL5 Forum**: [MQL5 Community](https://www.mql5.com/en/forum)
 
 ### Reporting Bugs
@@ -659,7 +659,7 @@ Submit your project to be featured here:
 
 ⭐ **Star this repo** if you find it useful!
 
-[Report Bug](https://github.com/yourusername/mql5-expert-antigravity-skill/issues) · [Request Feature](https://github.com/yourusername/mql5-expert-antigravity-skill/issues) · [Share Your Success](https://github.com/yourusername/mql5-expert-antigravity-skill/discussions)
+[Report Bug](https://github.com/yourusername/antigravity-mql5-skill/issues) · [Request Feature](https://github.com/yourusername/antigravity-mql5-skill/issues) · [Share Your Success](https://github.com/yourusername/antigravity-mql5-skill/discussions)
 
 ---
 
