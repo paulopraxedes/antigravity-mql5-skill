@@ -168,29 +168,42 @@ rules:
 
   # SECURITY
   security:
-    - id: S001
-      name: "MemoryLeak"
+    - id: SEC001
+      name: "UnsafeDLLImport"
       severity: CRITICAL
-      pattern: "new\\s+[^;]+$"
-      message: "CRITICAL: Potential memory leak. Use smart pointers or ensure proper deletion"
+      pattern: "#import\\s+\"(kernel32|shell32|user32)\\.dll\""
+      message: "CRITICAL: Unsafe System DLL import detected. This is a security risk and usually forbidden."
 
-    - id: S002
-      name: "BufferOverflow"
+    - id: SEC002
+      name: "UnsafeExec"
       severity: CRITICAL
-      pattern: "CopyBuffer\\([^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+,\\s*[^,]+\\)"
-      message: "CRITICAL: Potential buffer overflow in CopyBuffer call"
+      pattern: "ShellExecute|WinExec|CreateProcess"
+      message: "CRITICAL: Arbitrary code execution detected. This is strictly forbidden."
 
-    - id: S003
+    - id: SEC003
       name: "SQLInjection"
       severity: CRITICAL
-      pattern: "SELECT\\s+.*\\s+FROM\\s+.*\\s+WHERE\\s+.*\\s+=\\s+[^']+'[^']+'"
-      message: "CRITICAL: Potential SQL injection vulnerability"
+      pattern: "DatabaseExecute\\([^,]+,\\s*\"[^\"]*\"\\s*\\+\\s*"
+      message: "CRITICAL: SQL Injection Risk. Do not concatenate strings in SQL queries. Use DatabaseBind()."
 
-    - id: S004
+    - id: SEC004
+      name: "UnsafeWebRequest"
+      severity: WARNING
+      pattern: "WebRequest\\("
+      message: "WARNING: WebRequest requires URL whitelisting in Terminal options. Ensure HTTPS is used."
+
+    - id: SEC005
       name: "HardcodedCredentials"
       severity: CRITICAL
-      pattern: "password\\s*=\\s*\"[^\"]+\""
-      message: "CRITICAL: Hardcoded password detected. Use secure credential storage"
+      pattern: "password\\s*=\\s*\"[^\"]+\"|api_key\\s*=\\s*\"[^\"]+\""
+      message: "CRITICAL: Hardcoded credentials detected. Use input parameters or secure storage."
+
+    - id: SEC006
+      name: "InputSanityCheck"
+      severity: ERROR
+      pattern: "input\\s+\\w+\\s+\\w+;"
+      requires: "OnInit"
+      message: "ERROR: Input parameters must be validated in OnInit()."
 
   # STYLE
   style:

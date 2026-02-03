@@ -64,6 +64,14 @@ void OnTick() {
 - Limit functions to **50 lines maximum**
 - Use **meaningful names** (not magic numbers)
 
+### 6. SECURITY GUARDRAILS
+**STRICTLY PROHIBITED:**
+- ❌ **#import "kernel32.dll"** (or shell32.dll/user32.dll)
+- ❌ **ShellExecute / WinExec**
+- ❌ **SQL String Concatenation** (Use `DatabaseBind`)
+- ❌ **Unvalidated WebRequest** (Only allowed domains)
+- ❌ **Hardcoded Credentials**
+
 ---
 
 ## 📋 Safety Checklist
@@ -967,8 +975,9 @@ This skill integrates knowledge from 14 specialized modules located in `resource
 1. **language_core.md** - Core MQL5 syntax, data types, memory management
 2. **trading_engine.md** - Order execution, position management, error recovery
 3. **risk_management.md** - Position sizing, drawdown control, Kelly Criterion
-4. **indicators.md** - Custom indicator creation, buffer management
-5. **event_driven.md** - Event handlers (OnTick, OnTimer, OnTrade, OnChartEvent)
+4. **security_guardrails.md** - 🛡️ Anti-hacking & Code Injection prevention
+5. **indicators.md** - Custom indicator creation, buffer management
+6. **event_driven.md** - Event handlers (OnTick, OnTimer, OnTrade, OnChartEvent)
 6. **oop_architecture.md** - Class design, RAII, dependency injection
 7. **standard_library.md** - CTrade, CSymbolInfo, Collections
 8. **file_io.md** - File operations, CSV parsing, data persistence
@@ -1001,6 +1010,12 @@ Pre-validated templates are available in `resources/config/code_templates.json`:
 Critical safety rules are defined in `resources/config/linter_rules.yaml`:
 
 ### Critical (NEVER IGNORE)
+- **SEC001**: ❌ No unsafe DLL imports (kernel32, shell32)
+- **SEC002**: ❌ No arbitrary code execution (ShellExecute)
+- **SEC003**: ❌ No SQL Injection (concatenation)
+- **SEC004**: ⚠️ WebRequest must be whitelisted
+- **SEC005**: ❌ No hardcoded credentials
+- **SEC006**: ⚠️ Input parameters must be validated
 - **S001**: Magic number must be set
 - **S002**: NewBar filter required in OnTick
 - **S003**: Stop level validation required
